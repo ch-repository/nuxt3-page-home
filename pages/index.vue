@@ -161,12 +161,13 @@
     >
       <Swiper
         class="h-full"
-        :modules="[Pagination]"
+        :modules="[Pagination, SwiperAutoplay]"
         :pagination="pagination"
         :slides-per-view="1"
         :loop="true"
         :autoplay="{
-          delay: 200,
+          delay: 5000,
+          disableOnInteraction: false,
         }"
       >
         <SwiperSlide v-for="item, idx in swiperBannerList" :key="idx">
