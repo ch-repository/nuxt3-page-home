@@ -85,7 +85,7 @@
 
     <!-- 工作经验 -->
     <div
-      class="w-screen bg-[url('../assets/images/experience.jpg')] bg-cover bg-fixed h-[180px] md:h-[260px] mt-12 md:mt-28"
+      class="w-screen bg-[url('~/assets/images/experience.jpg')] bg-cover bg-fixed h-[180px] md:h-[260px] mt-12 md:mt-28"
     >
       <div
         class="w-full h-full md:w-10/12 mx-auto px-6 flex justify-around items-center text-white text-center"
@@ -125,7 +125,9 @@
           <span class="relative project">PROJECT</span>
         </h2>
 
-        <p class="leading-6 md:indent-7 wow animate__fadeIn text-center mb-2 md:mb-6">
+        <p
+          class="leading-6 md:indent-7 wow animate__fadeIn text-center mb-2 md:mb-6"
+        >
           Sit sint consectetur velit quisquam cupiditate impedit suscipit alias
         </p>
 
@@ -153,6 +155,32 @@
       </div>
     </div>
 
+    <!-- 名言名句 -->
+    <div
+      class="w-screen h-[300px] bg-[url('~/assets/images/banner/swiper-bg.jpg')] mt-4 md:mt-6 bg-cover py-16"
+    >
+      <Swiper
+        class="h-full"
+        :modules="[Pagination]"
+        :pagination="pagination"
+        :slides-per-view="1"
+        :loop="true"
+        :autoplay="{
+          delay: 200,
+        }"
+      >
+        <SwiperSlide v-for="item, idx in swiperBannerList" :key="idx">
+          <div>
+            <div class="text-white text-center">
+              <img :src="item.avatar" class="w-[72px] h-[72px] rounded-full object-cover mx-auto mb-1" alt="头像">
+              <h3 class="text-2xl mb-4">{{ item.author }}</h3>
+              <p class="iconfont text-sm famous-saying-icon">{{ item.famousSaying }}</p>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
+
     <!-- 临时占位 -->
     <div class="h-[300px]"></div>
   </div>
@@ -160,6 +188,7 @@
 
 <script setup>
 import { onMounted, onUnmounted } from "vue";
+import { Pagination } from "swiper/modules";
 
 const meInfos = [
   {
@@ -282,6 +311,31 @@ const projectList = [
   },
 ];
 
+const pagination = {
+  clickable: true,
+  renderBullet: function (index, className) {
+    return `<span class="${className}"></span>`;
+  },
+};
+
+const swiperBannerList = [
+  {
+    avatar: '../assets/images/banner/adam.jpg',
+    author: 'Edsger Dijkstra',
+    famousSaying: '测试只能证明程序有错误，而不能证明程序没有错误。'
+  },
+  {
+    avatar: '../assets/images/banner/adam.jpg',
+    author: 'Edsger Dijkstra',
+    famousSaying: '测试只能证明程序有错误，而不能证明程序没有错误。'
+  },
+  {
+    avatar: '../assets/images/banner/adam.jpg',
+    author: 'Edsger Dijkstra',
+    famousSaying: '测试只能证明程序有错误，而不能证明程序没有错误。'
+  }
+]
+
 onMounted(() => {
   // parallaxEffect();
 });
@@ -345,6 +399,17 @@ onUnmounted(() => {
     font-weight: bold;
   }
 
+  .famous-saying-icon::before {
+    content: "\eb8b";
+    font-size: 18px;
+    margin-right: 5px;
+  }
+
+  .famous-saying-icon::after {
+    content: "\eb8a";
+    font-size: 18px;
+  }
+
   @keyframes floatUpDown {
     0%,
     100% {
@@ -353,6 +418,16 @@ onUnmounted(() => {
     50% {
       transform: translateY(-10px);
     }
+  }
+
+  :deep(.swiper-pagination) {
+    margin-bottom: -8px;
+  }
+
+  :deep(.swiper-pagination-bullet) {
+    width: 12px;
+    height: 12px;
+    background-color: rgb(180 83 9 / 1);
   }
 }
 </style>
