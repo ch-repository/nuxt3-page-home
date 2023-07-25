@@ -63,8 +63,8 @@
             </li>
           </ul>
 
-          <div class="mt-6 wow animate__fadeInRight">
-            <div v-for="item, idx in skill" :key="idx" class="mt-6">
+          <div class="mt-6">
+            <div v-for="(item, idx) in skill" :key="idx" class="mt-6 wow animate__fadeInRight"  :data-wow-delay="`${idx * 0.1}S`">
               <div class="flex justify-between my-2 text-sm text-[#57534e]">
                 <h3>{{ item.name }}</h3>
                 <h5>{{ item.progress }}%</h5>
@@ -76,6 +76,48 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 工作经验 -->
+    <div
+      class="w-screen bg-[url('../assets/images/experience.jpg')] bg-cover bg-fixed h-[180px] md:h-[260px] mt-12 md:mt-28"
+    >
+      <div
+        class="w-full h-full md:w-10/12 mx-auto px-6 flex justify-around items-center text-white text-center"
+      >
+        <div class="w-fit wow animate__fadeInUp" data-wow-delay="0.5s">
+          <div class="text-2xl lg:text-6xl">
+            <i class="iconfont icon-nianling text-2xl lg:text-6xl"></i>
+            <span> 24</span>
+          </div>
+          <div class="text-xl lg:text-3xl mt-2">年龄</div>
+        </div>
+
+        <div class="w-fit wow animate__fadeInUp" data-wow-delay="1s">
+          <div class="text-2xl lg:text-6xl">
+            <i class="iconfont icon-gongzuojingyan text-2xl lg:text-6xl"></i>
+            <span> 3</span>
+          </div>
+          <div class="text-xl lg:text-3xl mt-2">工作经验</div>
+        </div>
+
+        <div class="w-fit wow animate__fadeInUp" data-wow-delay="1.5s">
+          <div class="text-2xl lg:text-6xl">
+            <i class="iconfont icon-code text-2xl lg:text-6xl"></i>
+            <span> 1000000+</span>
+          </div>
+          <div class="text-xl lg:text-3xl mt-2">代码行数</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 项目经验 -->
+    <div class="w-full md:w-10/12 mx-auto px-6">
+      <h2
+        class="mt-12 md:mt-24 mb-6 md:mb-12 text-center text-4xl text-slate-600 font-bold wow animate__fadeIn"
+      >
+        <span class="relative project">PROJECT</span>
+      </h2>
     </div>
   </div>
 </template>
@@ -116,66 +158,66 @@ const meInfos = [
 
 const skill = [
   {
-    name: 'HTML / CSS3',
+    name: "HTML / CSS3",
     progress: 90,
-    width: 'w-[90%]',
-    bgColor: 'bg-[#0891b2]'
+    width: "w-[90%]",
+    bgColor: "bg-[#0891b2]",
   },
   {
-    name: 'Javascript / ES6',
+    name: "Javascript / ES6",
     progress: 80,
-    width: 'w-[80%]',
-    bgColor: 'bg-[#0f766e]'
+    width: "w-[80%]",
+    bgColor: "bg-[#0f766e]",
   },
   {
-    name: 'TypeScript',
+    name: "TypeScript",
     progress: 75,
-    width: 'w-[75%]',
-    bgColor: 'bg-[#16a34a]'
+    width: "w-[75%]",
+    bgColor: "bg-[#16a34a]",
   },
   {
-    name: 'Vue2 / Vue3',
+    name: "Vue2 / Vue3",
     progress: 80,
-    width: 'w-[80%]',
-    bgColor: 'bg-[#4f46e5]'
+    width: "w-[80%]",
+    bgColor: "bg-[#4f46e5]",
   },
   {
-    name: 'Nuxt2 / Nuxt3',
+    name: "Nuxt2 / Nuxt3",
     progress: 80,
-    width: 'w-[80%]',
-    bgColor: 'bg-[#c026d3]'
+    width: "w-[80%]",
+    bgColor: "bg-[#c026d3]",
   },
   {
-    name: 'React',
+    name: "React",
     progress: 60,
-    width: 'w-[60%]',
-    bgColor: 'bg-[#ca8a04]'
+    width: "w-[60%]",
+    bgColor: "bg-[#ca8a04]",
   },
   {
-    name: 'Ant Design / Element Ul / Echarts / Iview / Bootstrap ...',
+    name: "Ant Design / Element Ul / Echarts / Iview / Bootstrap ...",
     progress: 88,
-    width: 'w-[88%]',
-    bgColor: 'bg-[#22d3ee]'
+    width: "w-[88%]",
+    bgColor: "bg-[#22d3ee]",
   },
   {
-    name: 'Less / Scss',
+    name: "Less / Scss",
     progress: 83,
-    width: 'w-[83%]',
-    bgColor: 'bg-[#f59e0b]'
+    width: "w-[83%]",
+    bgColor: "bg-[#f59e0b]",
   },
   {
-    name: 'uni-app / 微信小程序',
+    name: "uni-app / 微信小程序",
     progress: 60,
-    width: 'w-[60%]',
-    bgColor: 'bg-[#c2410c]'
+    width: "w-[60%]",
+    bgColor: "bg-[#c2410c]",
   },
   {
-    name: 'Linux',
+    name: "Linux",
     progress: 50,
-    width: 'w-[50%]',
-    bgColor: 'bg-[#dc2626]'
-  }
-]
+    width: "w-[50%]",
+    bgColor: "bg-[#dc2626]",
+  },
+];
 
 onMounted(() => {
   // parallaxEffect();
@@ -218,6 +260,18 @@ onUnmounted(() => {
 
   .about::before {
     content: "ABOUT ME";
+    position: absolute;
+    top: -12px;
+    font-size: 48px;
+    color: #a5a5a5;
+    opacity: 0.2;
+    white-space: nowrap;
+    transform: translateX(-12%);
+    font-weight: bold;
+  }
+
+  .project::before {
+    content: "PEOJECT";
     position: absolute;
     top: -12px;
     font-size: 48px;
