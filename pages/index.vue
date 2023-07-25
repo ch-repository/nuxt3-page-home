@@ -64,7 +64,12 @@
           </ul>
 
           <div class="mt-6">
-            <div v-for="(item, idx) in skill" :key="idx" class="mt-6 wow animate__fadeInRight"  :data-wow-delay="`${idx * 0.1}S`">
+            <div
+              v-for="(item, idx) in skill"
+              :key="idx"
+              class="mt-6 wow animate__fadeInRight"
+              :data-wow-delay="`${idx * 0.1}S`"
+            >
               <div class="flex justify-between my-2 text-sm text-[#57534e]">
                 <h3>{{ item.name }}</h3>
                 <h5>{{ item.progress }}%</h5>
@@ -93,7 +98,7 @@
           <div class="text-xl lg:text-3xl mt-2">年龄</div>
         </div>
 
-        <div class="w-fit wow animate__fadeInUp" data-wow-delay="1s">
+        <div class="w-fit wow animate__fadeInUp" data-wow-delay="0.8s">
           <div class="text-2xl lg:text-6xl">
             <i class="iconfont icon-gongzuojingyan text-2xl lg:text-6xl"></i>
             <span> 3</span>
@@ -101,7 +106,7 @@
           <div class="text-xl lg:text-3xl mt-2">工作经验</div>
         </div>
 
-        <div class="w-fit wow animate__fadeInUp" data-wow-delay="1.5s">
+        <div class="w-fit wow animate__fadeInUp" data-wow-delay="1.1s">
           <div class="text-2xl lg:text-6xl">
             <i class="iconfont icon-code text-2xl lg:text-6xl"></i>
             <span> 1000000+</span>
@@ -112,13 +117,44 @@
     </div>
 
     <!-- 项目经验 -->
-    <div class="w-full md:w-10/12 mx-auto px-6">
-      <h2
-        class="mt-12 md:mt-24 mb-6 md:mb-12 text-center text-4xl text-slate-600 font-bold wow animate__fadeIn"
-      >
-        <span class="relative project">PROJECT</span>
-      </h2>
+    <div class="bg-gray-50 py-12">
+      <div class="w-full md:w-10/12 mx-auto px-6">
+        <h2
+          class="mt-12 md:mt-24 mb-6 md:mb-6 text-center text-4xl text-slate-600 font-bold wow animate__fadeIn"
+        >
+          <span class="relative project">PROJECT</span>
+        </h2>
+
+        <p class="leading-6 md:indent-7 wow animate__fadeIn text-center mb-2 md:mb-6">
+          Sit sint consectetur velit quisquam cupiditate impedit suscipit alias
+        </p>
+
+        <div class="flex flex-wrap justify-between">
+          <!-- 卡片 -->
+          <div
+            v-for="(item, idx) in projectList"
+            :key="idx"
+            class="w-full md:w-[23%] min-w-[260px] mt-8 lg:mt-0 p-6 rounded-md shadow-lg text-center wow animate__fadeInUp cursor-pointer hover:shadow-xl duration-300"
+            :data-wow-delay="`${idx * 0.1}S`"
+          >
+            <div
+              class="w-20 h-20 bg-amber-700 rounded-full mx-auto my-8 flex justify-center items-center"
+            >
+              <i :class="`iconfont ${item.icon} text-white text-3xl`"></i>
+            </div>
+            <h4
+              class="w-full text-2xl font-bold mb-4 hover:text-amber-700 duration-300"
+            >
+              {{ item.name }}
+            </h4>
+            <p class="leading-6">{{ item.description }}</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- 临时占位 -->
+    <div class="h-[300px]"></div>
   </div>
 </template>
 
@@ -216,6 +252,33 @@ const skill = [
     progress: 50,
     width: "w-[50%]",
     bgColor: "bg-[#dc2626]",
+  },
+];
+
+const projectList = [
+  {
+    icon: "icon-wuliuxiaocheche",
+    name: "Lorem Ipsum",
+    description:
+      "Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident",
+  },
+  {
+    icon: "icon-bangong",
+    name: "Sed ut perspiciatis",
+    description:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+  },
+  {
+    icon: "icon-xinjianhuiyi",
+    name: "Magni Dolores",
+    description:
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+  },
+  {
+    icon: "icon-kapian",
+    name: "Nemo Enim",
+    description:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque",
   },
 ];
 
