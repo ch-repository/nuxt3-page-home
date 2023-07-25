@@ -1,7 +1,7 @@
 <template>
   <div class="header fixed w-screen h-16 z-50 text-white opacity-70 animate__animated">
     <div class="text-sm md:text-lg w-max h-full mx-auto">
-      <ul class="h-full flex items-center gap-x-7">
+      <ul class="h-full flex items-center text-sm md:text-xl space-x-4 md:space-x-14">
         <li>首页</li>
         <li>关于</li>
         <li>联系我</li>

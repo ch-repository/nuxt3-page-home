@@ -5,7 +5,7 @@ export default defineNuxtConfig({
       link: [
         {
           rel: "stylesheet",
-          href: "https://at.alicdn.com/t/c/font_4151139_y8pgb3fcw2r.css?spm=a313x.7781069.1998910419.53&file=font_4151139_y8pgb3fcw2r.css",
+          href: "https://at.alicdn.com/t/c/font_4128188_eae7gbb3bsg.css?spm=a313x.7781069.1998910419.53&file=font_4128188_eae7gbb3bsg.css",
         },
       ],
     },
