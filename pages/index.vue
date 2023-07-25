@@ -170,16 +170,71 @@
           disableOnInteraction: false,
         }"
       >
-        <SwiperSlide v-for="item, idx in swiperBannerList" :key="idx">
+        <SwiperSlide v-for="(item, idx) in swiperBannerList" :key="idx">
           <div>
             <div class="text-white text-center">
-              <img :src="item.avatar" class="w-[72px] h-[72px] rounded-full object-cover mx-auto mb-1" alt="头像">
+              <img
+                :src="item.avatar"
+                class="w-[72px] h-[72px] rounded-full object-cover mx-auto mb-1"
+                alt="头像"
+              />
               <h3 class="text-2xl mb-4">{{ item.author }}</h3>
-              <p class="iconfont text-sm famous-saying-icon">{{ item.famousSaying }}</p>
+              <p class="iconfont text-sm famous-saying-icon">
+                {{ item.famousSaying }}
+              </p>
             </div>
           </div>
         </SwiperSlide>
       </Swiper>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="mt-24">
+      <h2
+        class="mt-12 md:mt-24 mb-6 md:mb-6 text-center text-4xl text-slate-600 font-bold wow animate__fadeIn"
+      >
+        <span class="relative educational">EDUCATIONAL</span>
+      </h2>
+
+      <div class="bg-white py-6 sm:py-8 lg:py-12">
+        <div class="mx-auto max-w-screen-xl px-4 md:px-8">
+          <div class="grid gap-8 md:grid-cols-2 lg:gap-12">
+            <div class="md:pt-8 wow animate__fadeInLeft" data-wow-delay="0.3s">
+              <div
+                class="h-64 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto"
+              >
+                <img
+                  src="~/assets/images/school.jpg"
+                  loading="lazy"
+                  alt="Photo by Martin Sanchez"
+                  class="h-96 w-full object-cover object-center"
+                />
+              </div>
+            </div>
+
+            <div class="md:pt-8 wow animate__fadeInRight" data-wow-delay="0.8s">
+              <h1
+                class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6 md:text-left"
+              >
+                河北建材职业技术学院
+              </h1>
+
+              <p class="text-center font-bold text-indigo-500 md:text-left">
+                2018.9 - 2021.6 （信息工程系）
+              </p>
+
+              <p class="mb-6 text-gray-500 sm:text-lg mt-6 leading-6">
+                主修课程：HTML5、CSS3、JavaScript、Jquery、Photoshop、C 语言、PHP、Python、计算机网络、计算机应用、Mysql
+              </p>
+
+              <p class="mb-6 text-gray-500 sm:text-lg md:mb-8 leading-6">
+                河北建材职业技术学院（Hebei Polytechnic of Building
+                Materials）位于河北省秦皇岛市，是经河北省人民政府批准、中华人民共和国教育部备案的高等职业技术院校，是教育部全国建材教指委副主任单位、河北省建材职业教育集团牵头单位、河北省建材工业协会副会长单位、河北省硅酸盐学会副理事长单位、河北省服务外包培训基地、教育部支援西部教育顾问院校。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- 临时占位 -->
@@ -321,21 +376,21 @@ const pagination = {
 
 const swiperBannerList = [
   {
-    avatar: '../assets/images/banner/adam.jpg',
-    author: 'Edsger Dijkstra',
-    famousSaying: '测试只能证明程序有错误，而不能证明程序没有错误。'
+    avatar: "../assets/images/banner/adam.jpg",
+    author: "Edsger Dijkstra",
+    famousSaying: "测试只能证明程序有错误，而不能证明程序没有错误。",
   },
   {
-    avatar: '../assets/images/banner/adam.jpg',
-    author: 'Edsger Dijkstra',
-    famousSaying: '测试只能证明程序有错误，而不能证明程序没有错误。'
+    avatar: "../assets/images/banner/adam.jpg",
+    author: "Edsger Dijkstra",
+    famousSaying: "测试只能证明程序有错误，而不能证明程序没有错误。",
   },
   {
-    avatar: '../assets/images/banner/adam.jpg',
-    author: 'Edsger Dijkstra',
-    famousSaying: '测试只能证明程序有错误，而不能证明程序没有错误。'
-  }
-]
+    avatar: "../assets/images/banner/adam.jpg",
+    author: "Edsger Dijkstra",
+    famousSaying: "测试只能证明程序有错误，而不能证明程序没有错误。",
+  },
+];
 
 onMounted(() => {
   // parallaxEffect();
@@ -390,6 +445,18 @@ onUnmounted(() => {
 
   .project::before {
     content: "PEOJECT";
+    position: absolute;
+    top: -12px;
+    font-size: 48px;
+    color: #a5a5a5;
+    opacity: 0.2;
+    white-space: nowrap;
+    transform: translateX(-12%);
+    font-weight: bold;
+  }
+
+  .educational::before {
+    content: "EDUCATIONAL";
     position: absolute;
     top: -12px;
     font-size: 48px;
