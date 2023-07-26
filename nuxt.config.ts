@@ -2,6 +2,13 @@
 export default defineNuxtConfig({
   app: {
     head: {
+      title: '姚超航 | 个人主页',
+      meta: [
+        // <meta name="description" content="My amazing site">
+        { name: 'author', content: '姚超航' },
+        { name: 'description', content: '欢迎来到我的个人主页，一起探索前端的奇妙世界！' },
+        { name: 'keywords', content: '姚超航,前端开发,个人主页' }
+      ],
       link: [
         {
           rel: "stylesheet",
