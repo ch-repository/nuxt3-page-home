@@ -548,17 +548,17 @@ const pagination = {
 
 const swiperBannerList = [
   {
-    avatar: "../assets/images/banner/mike.png",
+    avatar: "/mike.png",
     author: "Carig Zerouni",
     famousSaying: "如果你发现特殊情况太多，那你肯定是用错方法了。",
   },
   {
-    avatar: "../assets/images/banner/adam.jpg",
+    avatar: "/adam.jpg",
     author: "Edsger Dijkstra",
     famousSaying: "测试只能证明程序有错误，而不能证明程序没有错误。",
   },
   {
-    avatar: "../assets/images/banner/ben.png",
+    avatar: "/ben.png",
     author: "Walt Weir",
     famousSaying: "如果我们没能力修好它，我们就会告诉你它根本没坏。",
   },
