@@ -400,7 +400,7 @@
 
     <div
       id="notificationContainer"
-      class="fixed top-24 left-[50%] translate-x-[-50%] text-white py-2 px-4 rounded hidden z-50 feadInOutAnimation"
+      class="fixed top-24 left-[50%] translate-x-[-50%] text-white py-2 px-4 rounded hidden z-50"
     >
       {{ hint }}
     </div>
@@ -590,6 +590,14 @@ function downArrow() {
 //   });
 // }
 
+function reset() {
+  emailForm.value = {
+    name: "",
+    email: "",
+    message: "",
+  };
+}
+
 function verify(type, value, message) {
   if (type === "required") {
     if (!value) {
@@ -640,7 +648,10 @@ function sendEmail(event) {
   } else if (verifyMessage) {
     notification("error", verifyMessage);
   } else {
-    homeFetch.sendEmail({ name, email, message });
+    homeFetch.sendEmail({ name, email, message }).then(() => {
+      reset();
+      notification("success", "发送成功");
+    });
   }
 }
 
