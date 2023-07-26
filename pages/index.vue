@@ -10,11 +10,18 @@
         <div
           class="w-max h-max text-white text-center tracking-normal md:tracking-widest min-w-400"
         >
-          <h1 class="px-6 md:px-16 mb-4 md:mb-6 text-4xl md:text-6xl">
-            Laura Thomson
+          <h1
+            class="px-6 md:px-16 mb-6 md:mb-8 text-2xl md:text-3xl lg:text-5xl"
+          >
+            姚超航 - Welcome to My Personal Page
           </h1>
-          <h2 class="px-6 md:px-16 text-sm md:text-xl wow animate__fadeInRight">
-            I'M A PROFESSIONAL PHOTOGRAPHER IN NEW YORK CITY
+          <h2
+            class="px-6 md:px-16 text-sm md:text-base wow animate__fadeInRight"
+          >
+            我是一名前端开发工程师 - Frontend
+            Developer，探索创新，用代码绘制未来。Experienced in the frontend
+            realm with 3 years of coding adventures.
+            欢迎来到我的个人主页，一起探索前端的奇妙世界！
           </h2>
         </div>
         <i
@@ -128,7 +135,23 @@
         <p
           class="leading-6 md:indent-7 wow animate__fadeIn text-center mb-2 md:mb-6"
         >
-          Sit sint consectetur velit quisquam cupiditate impedit suscipit alias
+          Explore Some of My Core Projects - 探索部分核心项目，
+        </p>
+
+        <p
+          class="leading-6 md:indent-7 wow animate__fadeIn text-center"
+        >
+          Innovative Solutions, Transformed Experiences -
+          创新解决方案，改变体验， Due to limited space, below is a selection of
+          some core projects that showcase my expertise and passion for creating
+          exceptional digital experiences. Feel free to explore and learn more
+          about my work!
+        </p>
+
+        <p
+          class="leading-6 md:indent-7 wow animate__fadeIn text-center mb-2 md:mb-6"
+        >
+          由于空间有限，以下只列出了部分核心项目，它们展示了我对创造卓越数字体验的专业知识和热情。欢迎探索并了解更多我的作品！
         </p>
 
         <div class="flex flex-wrap justify-between">
@@ -145,11 +168,11 @@
               <i :class="`iconfont ${item.icon} text-white text-3xl`"></i>
             </div>
             <h4
-              class="w-full text-2xl font-bold mb-4 hover:text-amber-700 duration-300"
+              class="w-full text-xl font-bold mb-4 hover:text-amber-700 duration-300"
             >
               {{ item.name }}
             </h4>
-            <p class="leading-6">{{ item.description }}</p>
+            <p class="leading-6 text-sm">{{ item.description }}</p>
           </div>
         </div>
       </div>
@@ -476,27 +499,27 @@ const skill = [
 const projectList = [
   {
     icon: "icon-wuliuxiaocheche",
-    name: "Lorem Ipsum",
+    name: "FoodsUp",
     description:
-      "Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident",
+      "FoodsUp chain consider “leading restaurants to be an Eco-friendly industry” as mission, providing high quality food container made by degradable, recyclable material such as sugarcane, kraft and shell.",
   },
   {
     icon: "icon-bangong",
-    name: "Sed ut perspiciatis",
+    name: "**有娱科技有限公司OA办公平台",
     description:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+      "一款针对某某公司的办公业务搭建的线上OA办公系统，提升了公司内部整体的办公效率",
   },
   {
     icon: "icon-xinjianhuiyi",
-    name: "Magni Dolores",
+    name: "多场景视频会议评审系统",
     description:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+      "疫情期间专家及汇报员等人员不方便进行线下开展会议而研发的这款系统。它有着丰富的业务功能以及多种类型的会议室可供用户选择",
   },
   {
     icon: "icon-kapian",
-    name: "Nemo Enim",
+    name: "*市社保卡管理平台",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque",
+      "平台针对某市的社保卡业务需求进行研发，可以使各个网点的工作人员针对用户的社保卡需求进行维护，比如用户需要办理社保卡、忘记了密码、想要社保卡转移等等，都可以通过这个平台去进行办理",
   },
 ];
 
@@ -509,9 +532,9 @@ const pagination = {
 
 const swiperBannerList = [
   {
-    avatar: "../assets/images/banner/adam.jpg",
-    author: "Edsger Dijkstra",
-    famousSaying: "测试只能证明程序有错误，而不能证明程序没有错误。",
+    avatar: "../assets/images/banner/mike.png",
+    author: "Carig Zerouni",
+    famousSaying: "如果你发现特殊情况太多，那你肯定是用错方法了。",
   },
   {
     avatar: "../assets/images/banner/adam.jpg",
@@ -519,9 +542,9 @@ const swiperBannerList = [
     famousSaying: "测试只能证明程序有错误，而不能证明程序没有错误。",
   },
   {
-    avatar: "../assets/images/banner/adam.jpg",
-    author: "Edsger Dijkstra",
-    famousSaying: "测试只能证明程序有错误，而不能证明程序没有错误。",
+    avatar: "../assets/images/banner/ben.png",
+    author: "Walt Weir",
+    famousSaying: "如果我们没能力修好它，我们就会告诉你它根本没坏。",
   },
 ];
 
