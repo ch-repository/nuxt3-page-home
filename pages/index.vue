@@ -34,6 +34,7 @@
     <!-- 关于 -->
     <div class="w-full md:w-10/12 mx-auto px-6">
       <h2
+        id="about"
         class="mt-12 md:mt-24 mb-6 md:mb-12 text-center text-4xl text-slate-600 font-bold wow animate__fadeIn"
       >
         <span class="relative about">ABOUT ME</span>
@@ -92,6 +93,7 @@
 
     <!-- 工作经验 -->
     <div
+      id="work"
       class="w-screen bg-[url('~/assets/images/experience.jpg')] bg-cover bg-fixed h-[180px] md:h-[260px] mt-12 md:mt-28"
     >
       <div
@@ -127,6 +129,7 @@
     <div class="bg-gray-50 py-12">
       <div class="w-full md:w-10/12 mx-auto px-6">
         <h2
+          id="project"
           class="mt-12 md:mt-24 mb-6 md:mb-6 text-center text-4xl text-slate-600 font-bold wow animate__fadeIn"
         >
           <span class="relative project">PROJECT</span>
@@ -161,12 +164,12 @@
             :data-wow-delay="`${idx * 0.1}S`"
           >
             <div
-              class="w-20 h-20 bg-amber-700 rounded-full mx-auto my-8 flex justify-center items-center"
+              class="w-20 h-20 bg-blue-700 rounded-full mx-auto my-8 flex justify-center items-center"
             >
               <i :class="`iconfont ${item.icon} text-white text-3xl`"></i>
             </div>
             <h4
-              class="w-full text-xl font-bold mb-4 hover:text-amber-700 duration-300"
+              class="w-full text-xl font-bold mb-4 hover:text-blue-700 duration-300"
             >
               {{ item.name }}
             </h4>
@@ -178,6 +181,7 @@
 
     <!-- 名言名句 -->
     <div
+      id="wisdom"
       class="w-screen h-[300px] bg-[url('~/assets/images/banner/swiper-bg.jpg')] mt-4 md:mt-6 bg-cover py-16"
     >
       <Swiper
@@ -212,6 +216,7 @@
     <!-- 教育背景 -->
     <div class="mt-24">
       <h2
+        id="education"
         class="mt-12 md:mt-24 mb-6 md:mb-6 text-center text-4xl text-slate-600 font-bold wow animate__fadeIn"
       >
         <span class="relative educational">EDUCATIONAL</span>
@@ -240,7 +245,7 @@
                 河北建材职业技术学院
               </h1>
 
-              <p class="text-center font-bold text-indigo-500 md:text-left">
+              <p class="text-center font-bold text-blue-500 md:text-left">
                 2018.9 - 2021.6 （信息工程系）
               </p>
 
@@ -262,6 +267,7 @@
     <!-- 联系我 -->
     <div class="w-full md:w-10/12 mx-auto px-6">
       <h2
+        id="contact"
         class="mt-12 md:mt-24 mb-6 text-center text-4xl text-slate-600 font-bold wow animate__fadeIn"
       >
         <span class="relative contact">CONTACT ME</span>
@@ -295,7 +301,7 @@
               <input
                 v-model="emailForm.name"
                 name="name"
-                class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
               />
             </div>
 
@@ -308,7 +314,7 @@
               <input
                 v-model="emailForm.email"
                 name="email"
-                class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
               />
             </div>
 
@@ -321,13 +327,13 @@
               <textarea
                 v-model="emailForm.message"
                 name="message"
-                class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
+                class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-blue-300 transition duration-100 focus:ring"
               ></textarea>
             </div>
 
             <div class="flex items-center justify-between sm:col-span-2">
               <button
-                class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"
+                class="inline-block rounded-lg bg-blue-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-blue-300 transition duration-100 hover:bg-blue-600 focus-visible:ring active:bg-blue-700 md:text-base"
                 @click="sendEmail"
               >
                 发送
@@ -339,7 +345,7 @@
               <a
                 href="https://www.chaohangweb.cn"
                 target="_blank"
-                class="underline transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+                class="underline transition duration-100 hover:text-blue-500 active:text-blue-600"
                 >像素脉动</a
               >.
             </p>
@@ -360,7 +366,7 @@
             <a
               href="https://www.chaohangweb.cn"
               target="_black"
-              class="text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600"
+              class="text-gray-500 transition duration-100 hover:text-blue-500 active:text-blue-600"
               >像素脉动（Blog）</a
             >
           </nav>
@@ -566,8 +572,100 @@ const emailForm = ref({
 
 const hint = ref("");
 
+function smoothScrollTo(offset) {
+  // 定义每一帧的滚动距离和总帧数
+  const scrollStep = offset / 15;
+  let currentStep = 0;
+
+  // 使用requestAnimationFrame实现平滑滚动
+  function step() {
+    currentStep++;
+    window.scrollBy(0, scrollStep);
+
+    // 判断是否达到目标位置
+    if (currentStep < 15) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  // 开始滚动
+  requestAnimationFrame(step);
+}
+
+function navbarClick() {
+  // 获取导航栏元素
+  const navbar = document.getElementById("navbar");
+
+  // 监听导航菜单项点击事件，触发平滑滚动
+  navbar.addEventListener("click", (event) => {
+    if (event.target.tagName === "A") {
+      event.preventDefault(); // 阻止默认的锚点跳转行为
+      const targetId = event.target.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+
+      // 获取目标元素相对于视口顶部的位置
+      let offset = targetElement.getBoundingClientRect().top;
+
+      if (targetId === "#home-name") {
+        offset = 0;
+      }
+
+      // 滚动到目标位置
+      smoothScrollTo(offset);
+    }
+  });
+}
+
+function debounce(func, delay) {
+  let timer;
+
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
+function setNav() {
+  const navbar = document.getElementById("navbar");
+  const menuItems = Array.from(navbar.getElementsByTagName("li"));
+
+  let closestMenuItem = null;
+  let closestDistance = Number.MAX_SAFE_INTEGER;
+
+  menuItems.forEach((item) => {
+    const targetId = item
+      .getElementsByTagName("a")[0]
+      .href.replace("#", "")
+      .replace(`${window.location.origin}/`, "");
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+      const distance = Math.abs(targetSection.getBoundingClientRect().top);
+      if (distance < closestDistance) {
+        closestMenuItem = item;
+        closestDistance = distance;
+      }
+    }
+  });
+
+  menuItems.forEach((item) => {
+    if (item === closestMenuItem) {
+      item.classList.add("text-blue-500");
+    } else {
+      item.classList.remove("text-blue-500");
+    }
+  });
+}
+
 onMounted(() => {
-  // parallaxEffect();
+  if (process.client) {
+    navbarClick();
+    setNav();
+    const setNavHandle = debounce(setNav, 200);
+    window.addEventListener("scroll", setNavHandle);
+  }
 });
 
 function downArrow() {
@@ -656,7 +754,7 @@ function sendEmail(event) {
 }
 
 onUnmounted(() => {
-  // window.removeEventListener("scroll");
+  window.removeEventListener("scroll");
 });
 </script>
 
@@ -746,7 +844,7 @@ onUnmounted(() => {
   :deep(.swiper-pagination-bullet) {
     width: 12px;
     height: 12px;
-    background-color: rgb(180 83 9 / 1);
+    background-color: rgb(59 130 246 / 1);
   }
 
   .feadInOutAnimation {
