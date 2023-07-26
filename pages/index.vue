@@ -138,9 +138,7 @@
           Explore Some of My Core Projects - 探索部分核心项目，
         </p>
 
-        <p
-          class="leading-6 md:indent-7 wow animate__fadeIn text-center"
-        >
+        <p class="leading-6 md:indent-7 wow animate__fadeIn text-center">
           Innovative Solutions, Transformed Experiences -
           创新解决方案，改变体验， Due to limited space, below is a selection of
           some core projects that showcase my expertise and passion for creating
@@ -295,6 +293,7 @@
                 >用户名*</label
               >
               <input
+                v-model="emailForm.name"
                 name="name"
                 class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
               />
@@ -307,6 +306,7 @@
                 >邮箱*</label
               >
               <input
+                v-model="emailForm.email"
                 name="email"
                 class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
               />
@@ -319,6 +319,7 @@
                 >内容*</label
               >
               <textarea
+                v-model="emailForm.message"
                 name="message"
                 class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"
               ></textarea>
@@ -327,6 +328,7 @@
             <div class="flex items-center justify-between sm:col-span-2">
               <button
                 class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"
+                @click="sendEmail"
               >
                 发送
               </button>
@@ -395,12 +397,20 @@
         </div>
       </footer>
     </div>
+
+    <div
+      id="notificationContainer"
+      class="fixed top-24 left-[50%] translate-x-[-50%] text-white py-2 px-4 rounded hidden z-50 feadInOutAnimation"
+    >
+      {{ hint }}
+    </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import { Pagination } from "swiper/modules";
+import homeFetch from "~/api/home";
 
 const meInfos = [
   {
@@ -548,6 +558,14 @@ const swiperBannerList = [
   },
 ];
 
+const emailForm = ref({
+  name: "",
+  email: "",
+  message: "",
+});
+
+const hint = ref("");
+
 onMounted(() => {
   // parallaxEffect();
 });
@@ -571,6 +589,60 @@ function downArrow() {
 //     homeBg.style.backgroundPositionY = -scrollDistance * 0.5 + "px";
 //   });
 // }
+
+function verify(type, value, message) {
+  if (type === "required") {
+    if (!value) {
+      return message;
+    }
+  }
+}
+
+function notification(type, message) {
+  const notification = document.getElementById("notificationContainer");
+  notification.classList.remove("hidden");
+  notification.classList.add("animate-fadeInOut");
+
+  if (type === "success") {
+    notification.classList.add("bg-green-500");
+  }
+
+  if (type === "error") {
+    notification.classList.add("bg-red-500");
+  }
+
+  hint.value = message;
+
+  setTimeout(function () {
+    if (type === "success") {
+      notification.classList.remove("bg-green-500");
+    }
+
+    if (type === "error") {
+      notification.classList.remove("bg-red-500");
+    }
+    notification.classList.remove("animate-fadeInOut");
+    notification.classList.add("hidden");
+  }, 1500);
+}
+
+function sendEmail(event) {
+  event.preventDefault();
+  const { name, email, message } = emailForm.value;
+  const verifyName = verify("required", name, "请输入姓名");
+  const verifyEmail = verify("required", email, "请输入邮箱");
+  const verifyMessage = verify("required", message, "请输入详细内容");
+
+  if (verifyName) {
+    notification("error", verifyName);
+  } else if (verifyEmail) {
+    notification("error", verifyEmail);
+  } else if (verifyMessage) {
+    notification("error", verifyMessage);
+  } else {
+    homeFetch.sendEmail({ name, email, message });
+  }
+}
 
 onUnmounted(() => {
   // window.removeEventListener("scroll");
@@ -664,6 +736,19 @@ onUnmounted(() => {
     width: 12px;
     height: 12px;
     background-color: rgb(180 83 9 / 1);
+  }
+
+  .feadInOutAnimation {
+    animation: fadeInOut 200ms linear;
+  }
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }
 </style>
