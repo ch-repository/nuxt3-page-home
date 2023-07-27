@@ -3,13 +3,13 @@ export default defineEventHandler((event) => {
   if (!event.node.req.url?.startsWith("/proxyApi")) return;
 
   // const { apiBaseUrl } = useRuntimeConfig();
-  const apiBaseUrl = 'https://email.chaohangweb.cn'
-  const target = new URL(event.node.req.url, apiBaseUrl);
+  const apiBaseUrl = "https://email.chaohangweb.cn";
+  const url = event.node.req.url.replace("/proxyApi", "");
+  const target = new URL(url, apiBaseUrl);
 
-  if (should_be_proxied)
-    return proxyRequest(event, target.toString(), {
-      headers: {
-        host: target.host, // if you need to bypass host security
-      },
-    });
+  return proxyRequest(event, target.toString(), {
+    headers: {
+      host: target.host, // if you need to bypass host security
+    },
+  });
 });

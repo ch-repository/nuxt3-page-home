@@ -20,13 +20,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/reset.css", "~/assets/css/animate.css"],
   modules: ["@nuxtjs/tailwindcss", "nuxt-swiper"],
-  nitro: {
-    devProxy: {
-      "/proxyApi": {
-        target: "https://email.chaohangweb.cn",
-        changeOrigin: true,
-        prependPath: true,
-      },
-    },
-  },
+  // nitro: {
+  //   devProxy: {
+  //     "/proxyApi": {
+  //       target: "https://email.chaohangweb.cn",
+  //       changeOrigin: true,
+  //       prependPath: true,
+  //     },
+  //   },
+  // },
 });
