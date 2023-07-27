@@ -6,5 +6,5 @@ import httpRequest from './request'
 */
 
 export const sendEmailFetch = (data) => {
-  return httpRequest.post('/email', data)
+  return httpRequest.post('/api/email', data)
 }

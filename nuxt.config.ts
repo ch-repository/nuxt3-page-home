@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "nuxt-swiper"],
   nitro: {
     devProxy: {
-      "/api": {
+      "/proxyApi": {
         target: "https://email.chaohangweb.cn",
         changeOrigin: true,
         prependPath: true,

@@ -1,4 +1,4 @@
-const BASE_URL = "/api";
+const BASE_URL = "/proxyApi";
 
 class HttpRequest {
   request(url, method, data, options = {}) {
