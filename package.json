@@ -15,6 +15,7 @@
     "nuxt": "^3.6.5"
   },
   "dependencies": {
+    "http-proxy-middleware": "^2.0.6",
     "nuxt-swiper": "^1.2.0",
     "sass": "^1.64.1",
     "wow.js": "^1.2.2"

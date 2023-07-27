@@ -1,39 +1,32 @@
-import {
-  defineEventHandler,
-  getCookie,
-  getHeaders,
-  getMethod,
-  getQuery,
-  readBody,
-} from "h3";
-const baseURL = "https://email.chaohangweb.cn";
+// ~/server/middleware/proxy.ts
+import { defineEventHandler } from "h3";
+import { createProxyMiddleware } from "http-proxy-middleware"; // npm install http-proxy-middleware@beta
+
 export default defineEventHandler(async (event) => {
-  console.log("1", event.req.url);
+  console.log('event.node.req.url', event.node.req.url)
   if (!event.node.req.url?.startsWith("/proxyApi")) return;
-  console.log("2", event.req.url);
 
-  const method = getMethod(event);
-  const params = getQuery(event);
-
-  const headers = getHeaders(event);
-  const authorization =
-    headers.Authorization || getCookie(event, "auth._token.local");
-
-  const url = event.req.url.replace("/proxyApi", "");
-
-  const body = method === "GET" ? undefined : await readBody(event);
-
-  console.log("url", url);
-  console.log("baseURL", baseURL);
-
-  return await $fetch(url, {
-    headers: {
-      "Content-Type": headers["content-type"],
-      Authorization: authorization,
+  const apiProxyMiddleware = createProxyMiddleware({
+    target: "https://email.chaohangweb.cn",
+    changeOrigin: true,
+    ws: true,
+    pathRewrite: {
+      "^/proxyApi": "",
     },
-    baseURL,
-    method,
-    params,
-    body,
+    pathFilter: [],
+    logger: console,
+  });
+  console.log("🚀 ~ file: proxy.js:19 ~ defineEventHandler ~ apiProxyMiddleware:", apiProxyMiddleware)
+
+  await new Promise((resolve, reject) => {
+    const next = (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(true);
+      }
+    };
+
+    apiProxyMiddleware(event.req, event.res, next);
   });
 });
