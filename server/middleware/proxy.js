@@ -1,4 +1,5 @@
 export default defineEventHandler((event) => {
+  console.log("经过代理");
   // proxy only "/api" requests
   if (!event.node.req.url?.startsWith("/proxyApi")) return;
 
