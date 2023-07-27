@@ -416,7 +416,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
 import { Pagination } from "swiper/modules";
-import homeFetch from "~/api/home";
+import { sendEmailFetch } from '~/utils/api'
 
 const meInfos = [
   {
@@ -746,7 +746,7 @@ function sendEmail(event) {
   } else if (verifyMessage) {
     notification("error", verifyMessage);
   } else {
-    homeFetch.sendEmail({ name, email, message }).then(() => {
+    sendEmailFetch({ name, email, message }).then(() => {
       reset();
       notification("success", "发送成功");
     });
