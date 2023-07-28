@@ -1,4 +1,4 @@
-const BASE_URL = "/proxyApi";
+const BASE_URL = "https://email.chaohangweb.cn";
 
 class HttpRequest {
   request(url, method, data, options = {}) {

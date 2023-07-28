@@ -398,7 +398,7 @@
         </div>
         <div class="py-2 text-center text-sm text-gray-400">
           <a href="https://beian.miit.gov.cn/" target="_blank"
-            >冀ICP备2023017514号-1</a
+            >冀ICP备2023017514号</a
           >
         </div>
       </footer>
@@ -679,15 +679,6 @@ function downArrow() {
   });
 }
 
-// 背景图片的滚动视差，有点花里胡哨，暂时废弃
-// function parallaxEffect() {
-//   const homeBg = document.getElementById("home-bg");
-//   window.addEventListener("scroll", () => {
-//     const scrollDistance = window.scrollY;
-//     homeBg.style.backgroundPositionY = -scrollDistance * 0.5 + "px";
-//   });
-// }
-
 function reset() {
   emailForm.value = {
     name: "",
@@ -845,19 +836,6 @@ onUnmounted(() => {
     width: 12px;
     height: 12px;
     background-color: rgb(59 130 246 / 1);
-  }
-
-  .feadInOutAnimation {
-    animation: fadeInOut 200ms linear;
-  }
-
-  @keyframes fadeInOut {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
   }
 }
 </style>

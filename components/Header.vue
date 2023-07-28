@@ -1,7 +1,7 @@
 <template>
   <div class="header fixed w-screen h-16 z-50 text-white opacity-70 animate__animated">
     <div class="text-sm md:text-lg w-max h-full mx-auto">
-      <ul id="navbar" class="h-full flex items-center text-sm md:text-xl space-x-4 md:space-x-14">
+      <ul id="navbar" class="h-full flex items-center text-xs md:text-xl space-x-2 md:space-x-14">
         <li><a href="#home-bg">首页</a></li>
         <li><a href="#about">关于我</a></li>
         <li><a href="#work">工作经验</a></li>
