@@ -416,7 +416,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
 import { Pagination } from "swiper/modules";
-import { sendEmailFetch } from '~/utils/api'
+import { sendEmailFetch } from "~/utils/api";
 
 const meInfos = [
   {
@@ -687,10 +687,18 @@ function reset() {
   };
 }
 
-function verify(type, value, message) {
+function verify(type, value, message, format = "") {
   if (type === "required") {
     if (!value) {
       return message;
+    }
+  }
+
+  if (format === "email") {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(value)) {
+      return "请输入正确的邮箱";
     }
   }
 }
@@ -727,7 +735,7 @@ function sendEmail(event) {
   event.preventDefault();
   const { name, email, message } = emailForm.value;
   const verifyName = verify("required", name, "请输入姓名");
-  const verifyEmail = verify("required", email, "请输入邮箱");
+  const verifyEmail = verify("required", email, "请输入邮箱", "email");
   const verifyMessage = verify("required", message, "请输入详细内容");
 
   if (verifyName) {
@@ -737,10 +745,22 @@ function sendEmail(event) {
   } else if (verifyMessage) {
     notification("error", verifyMessage);
   } else {
-    sendEmailFetch({ name, email, message }).then(() => {
-      reset();
-      notification("success", "发送成功");
-    });
+    sendEmailFetch({ name, email, message })
+      .then((res) => {
+        const message = res.data.value.message || "发送成功";
+        const status = res.data.value.status || "failure";
+        if (status === "success") {
+          reset();
+          notification("success", message);
+        } else if (status === "failure") {
+          notification("error", message);
+        } else {
+          notification("error", "服务器出现问题！");
+        }
+      })
+      .catch((err) => {
+        console.log("🚀 ~ file: index.vue:746 ~ sendEmail ~ err:", err);
+      });
   }
 }
 
