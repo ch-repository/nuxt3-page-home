@@ -1,4 +1,5 @@
 const BASE_URL = "https://email.chaohangweb.cn";
+// const BASE_URL = "http://127.0.0.1:9000";
 
 class HttpRequest {
   request(url, method, data, options = {}) {
