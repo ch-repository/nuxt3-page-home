@@ -8,15 +8,9 @@ export default defineNuxtConfig({
         { name: 'description', content: '欢迎来到我的个人主页，一起探索前端的奇妙世界！' },
         { name: 'keywords', content: '姚超航,前端开发,个人主页' }
       ],
-      link: [
-        {
-          rel: "stylesheet",
-          href: "https://at.alicdn.com/t/c/font_4128188_53mq5rtpueu.css?spm=a313x.7781069.1998910419.53&file=font_4128188_53mq5rtpueu.css",
-        },
-      ],
     },
   },
   devtools: { enabled: true },
-  css: ["~/assets/css/reset.css", "~/assets/css/animate.css"],
+  css: ["~/assets/css/reset.css", "~/assets/css/animate.css", "~/assets/iconfont/iconfont.css"],
   modules: ["@nuxtjs/tailwindcss", "nuxt-swiper"],
 });

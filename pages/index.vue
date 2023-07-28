@@ -336,6 +336,10 @@
                 class="inline-block rounded-lg bg-blue-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-blue-300 transition duration-100 hover:bg-blue-600 focus-visible:ring active:bg-blue-700 md:text-base"
                 @click="sendEmail"
               >
+                <i
+                  id="send-email-loading"
+                  class="inline-block hidden iconfont icon-loading btn-loading"
+                ></i>
                 发送
               </button>
             </div>
@@ -731,6 +735,19 @@ function notification(type, message) {
   }, 1500);
 }
 
+function toggleButtonLoading(type, id) {
+  const dom = document.getElementById(id);
+  if (dom) {
+    if (type === "add") {
+      dom.style.display = "inline-block";
+    }
+
+    if (type === "remove") {
+      dom.style.display = "none";
+    }
+  }
+}
+
 function sendEmail(event) {
   event.preventDefault();
   const { name, email, message } = emailForm.value;
@@ -745,6 +762,7 @@ function sendEmail(event) {
   } else if (verifyMessage) {
     notification("error", verifyMessage);
   } else {
+    toggleButtonLoading("add", "send-email-loading");
     sendEmailFetch({ name, email, message })
       .then((res) => {
         const message = res.data.value.message || "发送成功";
@@ -760,6 +778,9 @@ function sendEmail(event) {
       })
       .catch((err) => {
         console.log("🚀 ~ file: index.vue:746 ~ sendEmail ~ err:", err);
+      })
+      .finally(() => {
+        toggleButtonLoading("remove", "send-email-loading");
       });
   }
 }
@@ -845,6 +866,19 @@ onUnmounted(() => {
     }
     50% {
       transform: translateY(-10px);
+    }
+  }
+
+  .btn-loading {
+    animation: loading-keyframes 1s linear infinite;
+  }
+
+  @keyframes loading-keyframes {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 
