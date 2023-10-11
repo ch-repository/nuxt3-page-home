@@ -23,6 +23,5 @@ jobs:
             cd $SERVER_WORKDIR
             git checkout . 
             git pull
-            npm i
             npm run build
-            pm2 start ecosystem.config.js
+            pm2 restart home-page
