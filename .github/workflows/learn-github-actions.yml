@@ -1,0 +1,16 @@
+name: page-home-actions
+run-name: ${{ github.actor }} page-home-actions-run
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: git pull
+      - run: sudo npm run docker:build
