@@ -23,4 +23,4 @@ jobs:
             cd $SERVER_WORKDIR
             git checkout . 
             git pull 
-            sudo npm run docker:build
+            pm2 start ecosystem.config.js
