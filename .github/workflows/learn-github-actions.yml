@@ -8,18 +8,19 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - name: 检查分支
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - name: pull code
+        uses: appleboy/ssh-action@master
+        env:
+          SERVER_WORKDIR: ${{ secrets.SERVER_WORKDIR }} #传递工作目录变量
         with:
-          ref: master
-
-      - name: 配置环境
-        run: mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan <your domain> >> ~/.ssh/known_hosts
-          git config --global user.name 'yaochaohang'
-          git config --global user.email 'yaochaohang219@gmail.com'
-
-      - name: 远程部署
-        run: ssh root@chaohangweb.cn && cd /usr/share/nginx/page-home/ && git pull && npm run docker:build
+          host: ${{ secrets.SERVER_HOST }} #服务器地址
+          username: ${{ secrets.SERVER_USERNAME }} #用户名
+          key: ${{ secrets.SERVER_KEY }} #私钥 安全问题一定都以变量的方式传递！！！
+          envs: SERVER_WORKDIR #使用工作目录变量
+          # 进入到项目目录，执行依赖更新
+          script: |
+            cd $SERVER_WORKDIR
+            git checkout . 
+            git pull 
+            sudo npm run docker:build
